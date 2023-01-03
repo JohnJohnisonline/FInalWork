@@ -50,8 +50,8 @@
 					<nav id="nav">
 						<ul class="links">
 							<li><a href="index.html">Home</a></li>
-							<li class="active"><a href="generic.html">Pollution sources map</a></li>
-							<!-- <li><a href="elements.html"> Reference</a></li> -->
+							<li><a href="generic.html">Pollution sources map</a></li>
+							<li class="active"><a href="elements.html">Reference</a></li>
 						<!-- </ul>
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -95,6 +95,11 @@
 		var vtLayer = L.geoJson.vt(data, options).addTo(map);
 		var vtLayer = L.geoJson.vt(data1, options).addTo(map);
 		var vtLayer = L.geoJson.vt(data2, options).addTo(map);
+
+	
+		L.control.layers(null, {
+					"Data Sources": vtLayer
+		}).addTo(map);
 
 		// L.geoJson(data, {
 		// 	Polylgon: function(feature, latlng){
@@ -188,7 +193,50 @@ var metroLayer = L.geoJSON(data, {
 		});
 		popupOptions = {maxWidth: 200};
 		console.log(layer)
-		layer.bindPopup(feature.properties.TAG)
+		layer.bindPopup(`"Address:</br>"${feature.properties.Address} "</br>Zoning:</br>"${feature.properties.Classifica} "</br>Metal Manufacturer:</br>"${feature.properties.MetalManuf} "</br>Municipal storm sewer system:</br>"${feature.properties.MS4_Presen} "</br> Has Fat, Oil and Grease Trap:</br>"${feature.properties.FOG_HasTra} "</br> No Fats, Oil and Grease Trap:</br>"${feature.properties.FOG_HasNon} "</br> Food Processing Permit:</br>"${feature.properties.FoodProces} "</br> Industrial:</br>"${feature.properties.Indus2} "</br> Emmits Petroleum:</br>"${feature.properties.Petro2}`)
+		layer.bindPopup(
+			`<table>
+				<tr>
+					<th>Key</th>
+					<th>Value</th>
+				</tr>
+				<tr>
+					<td>Address:</td>
+					<td>${feature.properties.Address}</td>
+				</tr>
+				<tr>
+					<td>Zoning:</td>
+					<td>${feature.properties.Classifica}</td>
+				</tr>
+				<tr>
+					<td>Metal Manufacturer:</td>
+					<td>${feature.properties.MetalManuf}</td>
+				</tr>
+				<tr>
+					<td>Municipal storm sewer system:</td>
+					<td>${feature.properties.MS4_Presen}</td>
+				</tr>
+				<tr>
+					<td>Has Fat, Oil and Grease Trap:</td>
+					<td>${feature.properties.FOG_HasTra}</td>
+				</tr>
+				<tr>
+					<td>No Fats, Oil and Grease Trap:</td>
+					<td>${feature.properties.HasNon}</td>
+				</tr>
+				<tr>
+					<td>Food Processing Permit:</td>
+					<td>${feature.properties.FoodProces}</td>
+				</tr>
+				<tr>
+					<td>Industrial:</td>
+					<td>${feature.properties.Indus2}</td>
+				</tr>
+				<tr>
+					<td>Emits Petroleum:</td>
+					<td>${feature.properties.Petro2}</td>
+				</tr>
+			</table>`)
 		.openPopup();
 
             
