@@ -16,11 +16,11 @@
 		<!-- the Leaflet JavaScript library -->
 		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 		<script src="https://unpkg.com/geojson-vt@3.2.0/geojson-vt.js"></script>
-		<script src="HTML5 UP\leaflet-geojson-vt-master\src\leaflet-geojson-vt.js"></script>
+		<script src="leaflet-geojson-vt-master\src\leaflet-geojson-vt.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<!-- This is a plugin legend css -->
-		<link rel="stylesheet" href="HTML5 UP\assets\css\leaflet.legend.css" />
-		<script src="HTML5 UP\KentMajorWaterBodies.js"></script>
+		<link rel="stylesheet" href="assets\css\leaflet.legend.css" />
+		<script src="KentMajorWaterBodies.js"></script>
 	</head>
 	<body class="is-preload">
 
@@ -37,7 +37,7 @@
 						<ul class="links">
 							<li><a href="index.html">Home</a></li>
 							<li><a href="generic.html">Pollution sources map</a></li>
-							<li class="active"><a href="elements.html">Reference</a></li>
+							<!-- <li class="active"><a href="elements.html">Reference</a></li> -->
 						</ul>
 						<!-- <ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -65,48 +65,36 @@
 									Finally, this is a <a href="#">link</a>.</p>
 									<hr />
 									<div id="mymap" style="height: 75vh"></div>
-		<script type="text/javascript" src="KentMajorWaterBodies.js"></script>
+		<script type="text/javascript" src="KentStormPipes.js"></script>
 
-<!-- <div id='map'></div> -->
+		
+<div id='map'></div>
 	<!-- code where we build the map and its functionality -->
 	<script>
-	// 	var map = L.map('mymap').setView([47.395375, -122.223393 ], 12);
-	// 	var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-	// attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
-	// 	}).addTo(map);
+		var map = L.map('mymap').setView([47.395375, -122.223393 ], 12);
+		var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+		}).addTo(map);
+		var options = {
+				maxZoom: 17,
+				tolerance: 1,
+				debug: 0,
+				style: {
+					fillColor: "d1e5f0",
+					color: "#17f4e0",
+				},
+			};
+	
+	var vtLayer = L.geoJson.vt(data3, options).addTo(map);
 
-		// function ourFunction(map, Operations){
-		// var ourdata = 'D:\GRAD\FInal\HTML5 UP\Source_Control_Parcels.js';
-		// function onEachfeature(feature, layer){
-		// 	layer.on('click',function(e){
-		// 		var ourPopup = 'id:' + e.target.feature.properties.id + '<br>' + 'name:' + e.target.feature.properties.name +'Address:' + e.target.feature.properties.Address + 'SiteName:' + e.target.feature.properties.SiteName;
-		// 		layer.bindPopup(ourPopup).openPopup(e.latlng);
-		// 	});
-		// }
-		// var ourLayer = L.geoJson(null,{
-		// 	onEachFeature : onEachfeature
-		// })
-
-//
-// 		var options = {
-//   maxZoom: 16,
-//   tolerance: 3,
-//   debug: 0,
-//   style: {
-//     fillColor: "#1EB300",
-//     color: "#F2FF00",
-//   },
-// };
-// var vtLayer = L.geoJson.vt(data, options).addTo(map);
-//
-// 		var KentMajorWaterBodies = L.geoJson(data, {
-// 		 pointToLayer: function(feature, latlng){
-//  		 var marker = L.marker(latlng);
-//            marker.bindPopup("SiteName: "+ feature.properties.SiteName + "<br>Address: " + feature.properties.Address );
-//              return marker;
-// 					}
-// 	 });
-	 </script>
+		var KentStormPipes = L.geoJson(data3, {
+		 polylineToLayer: function(feature, latlng){
+ 		 var marker = L.marker(latlng);
+           marker.bindPopup("SiteName: "+ feature.properties.SiteName + "<br>Address: " + feature.properties.Address );
+             return marker;
+					}
+	 });
+	</script>
 									<h2>Heading Level 2</h2>
 									<h3>Heading Level 3</h3>
 									<h4>Heading Level 4</h4>
