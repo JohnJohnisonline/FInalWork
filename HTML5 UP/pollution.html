@@ -13,15 +13,17 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 			<!-- the Leaflet CSS -->
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-		<link rel="stylesheet" href="assets\css\leaflet.legend.css" />
-		<script src="assets\js\leaflet.legend.js"></script>
+			<!-- This is a plugin legend css -->
+		<link rel="stylesheet" href="Leaflet.Legend-master\src\leaflet.legend.css" />
+		<script src="Leaflet.Legend-master\src\leaflet.legend.js"></script>
+
 		<!-- the Leaflet JavaScript library -->
 		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 		<script src="https://unpkg.com/geojson-vt@3.2.0/geojson-vt.js"></script>
 		<script src="leaflet-geojson-vt-master\src\leaflet-geojson-vt.js"></script>
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<!-- This is a plugin legend css -->
-		<link rel="stylesheet" href="assets\css\leaflet.legend.css" />
+	
+	
 		<script src="Source_Control_Parcels.js"></script>
 		<script src="KentMajorWaterBodies.js"></script>
 		<script src="KentMinorWaterBodies.js"></script>
@@ -72,19 +74,19 @@
 								<header class="major">
 									<span class="date">December 12, 2022</span>
 									<h2>Industrial Pollution sources</h2>
-									<div id="mymap" style="height: 75vh"></div>
+									
 		<script type="text/javascript" src="Source_Control_Parcels.js"></script>
 		<script type="text/javascript" src="KentMinorWaterBodies.js"></script>
 		<script type="text/javascript" src="KentMajorWaterBodies.js"></script>
 
-<div id='map'></div>
+<div id="map" style="height: 75vh"></div>
 
 <div id="legend"></div>
 
 
 	<!-- code where we build the map and its functionality -->
 	<script>
-		var map = L.map('mymap').setView([47.395375, -122.223393 ], 12);
+		var map = L.map('map').setView([47.395375, -122.223393 ], 12);
 		var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
 		}).addTo(map);
@@ -206,7 +208,9 @@
 			onEachFeature: onEachFeature
 		}).addTo(map);
 
-		var legend = L.control.legend({ position: "bottomright" }).addTo(map);
+	
+		var legend = L.control.legend({ 
+			position: "bottomright" }).addTo(map);
 			legend.addLegend("<b>Legend:</b><br>Commercial: #d73027<br>Commercial Subunit: #fc8d59<br>Residential Multi-Family: #fee08b<br>Public Agency: #ffffbf<br>City of Kent: #d9ef8b<br>Others: #f7f7f7");
 
 	 </script>
