@@ -96,28 +96,6 @@
 		}).addTo(map);
 
 
-// create the GeoJSON layer and call the styling function with each marker
-var metroLayer = L.geoJSON(data, {
-	Polygon: function (feature, latlng) {
-		return L.icon(latlng, {
-			icon: Petro2
-		});
-		  },
-			filter: function(feature, layer) {
-    if (feature.properties.Petro >= 1) return true;
-    else return false;
-  }
-});
-
-		// Set up styles for subway lines
-		function subteStyle(feature) {
-		  return {
-		    "color": feature.properties.Petro2,
-		    "weight": 2
-		  };
-		}
-
-
 		// Create layer and add it to the map
 		var subteLayer = L.geoJSON(data, {
 		  style: subteStyle
