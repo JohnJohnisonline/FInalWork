@@ -50,9 +50,9 @@
 					<nav id="nav">
 						<ul class="links">
 							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Pollution sources map</a></li>
-							<!-- <li class="active"><a href="elements.html">Reference</a></li> -->
-						
+							<li><a href="Pollution.html">Pollution sources map</a></li>
+							<li class="active"><a href="Drainage.html">Drainage Basins</a></li>
+						</ul>
 					</nav>
 
 				<!-- Main -->
@@ -94,37 +94,6 @@
 		L.control.layers(null, {
 					"Data Sources": vtLayer
 		}).addTo(map);
-
-		// L.geoJson(data, {
-		// 	Polylgon: function(feature, latlng){
-    //     //       			var radiusSize;
-		// 		// var Type = feature.properties.TYPE;
-	  //     //           		if (TYPE = STREAM, RIVER, HYDRO,CHANNEL) radiusSize = 20;
-		// 		// 	else if (Type= DETENTION, BIOSWALE, BIOFILTRATION, POND) radiusSize = 26;
-	  //     //           		else if (TYPE = WET/DETENT) radiusSize = 20;
-		// 		// 	else radiusSize = 15;
-		//
-		//
-		//
-		// 				var marker = L.Marker(latlng);
-		// 		marker.bindPopup("Site Name: " + feature.properties.SiteName +
-		// 		"<br>Zoning: " + feature.properties.Classifica +
-		// 		 "address: " + feature.properties.address +
- 		// 		 "<br>Metal Manufacture: " + feature.properties.MetalManuf +
-		// 		  "<br>< Discharges into Stormwater " + feature.properties.MS4_Presen +
-		// 			"Fats, Oil, and Grease trap: " + feature.properties.FOG_HasTra +
-		// 			"No Fats, Oil, and Grease trap: " + feature.properties.FOG_HasNon +
-		// 			 "<br>Food Processing: " + feature.properties.FoodProces +
-		// 			 "industrial: " + feature.properties.Indus2 +
-	 	// 			 "<br>Petrol: " + feature.properties.Petro2);
-		// 		return marker;
-		// 	}
-		// }).addTo(map);
-
-		var Petro2 = L.icon({
-	iconUrl: 'Petro.png',
-	iconSize: [512,512]
-});
 
 
 // create the GeoJSON layer and call the styling function with each marker
@@ -242,127 +211,6 @@ var metroLayer = L.geoJSON(data, {
 			onEachFeature: onEachFeature
 		}).addTo(map);
 
-		// const legend = L.control.Legend({
-		// 	position: "bottomleft",
-    //         collapsed: false,
-    //         symbolWidth: 24,
-    //         opacity: 1,
-    //         column: 2,
-		// 				legends: [{
-		// 						label: "Commercial",
-    //             type: "circle",
-    //             radius: 6,
-		// 						type: "circle",
-		// 						color: "#d73027"
-		// 					 }, {
-		// 						label: "Commercial Subunit",
-		// 						type: "circle",
-		// 						color: "#fc8d59"
-		// 					},
-		// 					{
-		// 						label: "Residential Multi-Family",
-		// 						type: "circle",
-		// 						color: "#fee08b"
-		// 					},
-		// 					{
-		// 						label: "Public Agency",
-		// 						type: "circle",
-		// 						color: "#ffffbf"
-		// 					},
-		// 					{
-		// 						label: "City of Kent",
-		// 						type: "circle",
-		// 						color: "#d9ef8b"
-		// 					}]
-    //     })
-    //     .addTo(map);
-
-				// var legend = L.control.Legend({
-		    //          position: "bottomleft",
-		    //          collapsed: false,
-		    //          symbolWidth: 24,
-		    //          opacity: 1,
-		    //          column: 2,
-		    //          legends: [{
-		    //              label: "Commercial",
-		    //              type: "polygon",
-		    //              sides: 5,
-		    //              color: "#FF0000",
-		    //              fillColor: "#FF0000",
-		    //              weight: 2
-		    //          }]
-		    //      })
-		    //      .addTo(map);
-
-		// //Fault line legend
-		// var Legend1 = L.control.Legend({
-		// 		    position: "bottomright",
-		// 			title: "Pollution Sources",
-		// 		    legends: [
-		// 					{
-		// 						label: "Normal",
-		// 		        		type: "Polygon",
-		// 		        		color: "#e41a1c",
-		// 						weight: 4
-		// 		    		},
-		// 					{
-		// 						label: "Reverse",
-		// 						type: "Polygon",
-		// 						color: "#377eb8",
-		// 						weight: 4
-		// 					}
-		// 			]
-		// 		}).addTo(mymap);
-		//
-		// //Earthquake legend
-		// var Legend2 = L.control.Legend({
-		// 				position: "bottomleft",
-		// 				title: "River Classification",
-		// 				legends: [
-		// 					{
-		// 					 	label: "Less than 1",
-		// 						type: "circle",
-		// 						radius: 2,
-		// 						color: "black",
-		// 						fill: true,
-		// 						fillOpacity: "0.4"
-		// 					},
-		// 					{
-		// 						label: "Between 1 and 2.5",
-		// 						type: "circle",
-		// 						radius: 4,
-		// 						color: "black",
-		// 						fill: true,
-		// 						fillOpacity: "0.4"
-		// 					}
-		// 			]
-		// 		}).addTo(mymap);
-		// var popup = L.popup()
-		// .setLatLng(lnglat)
-		// .setContent('<p>Hello world!<br />This is a nice popup.</p>')
-		// .openOn(map);
-		// var Colors = {
-		//             //normal and subtypes (red)
-		//             'Classifica': "#e41a1c",
-		//             'MS4_Presen': "#d8b365",
-		//             'FOG_HasNon': "#fbb4ae",
-		//             'Indus2': "#7570b3",
-		// 						'FOG_HasTra': "#ccebc5",
- 		// 					 'Petro2': "#d95f02",
-		//         };
-		
-		// 				L.geoJson(data1, {
-		// 					interactive: true,
-		// 					style: function(feature) {
-		// 						if (feature.properties.SiteName != null){
-		// 							return {"color": Colors[feature.properties.Indus2]};
-		// 						}
-		// 						else {
-		// 							return {"color": "grey"};
-		// 						}
-		// 					}
-		// 				}).addTo(map);
-
 
 
 		var MajorWB = L.geoJson(data2, {
@@ -381,34 +229,7 @@ var metroLayer = L.geoJSON(data, {
 
  </p>
 		</header>
-									 <!-- <div id='map' style='width: 800px; height: 600px;'></div>
-										<script>
-										  mapboxgl.accessToken = 'pk.eyJ1Ijoiam9obmthbWF1IiwiYSI6ImNsYTkxNDBpODAxYmszb250aTM1enNhbXUifQ.yIea6qeBtneyMQlUO8D3zw';
-										  var map = new mapboxgl.Map({
-										    container: 'map',
-										    style: 'mapbox://styles/mapbox/streets-v11'
-										  });
-
-											map.on('load',() => {
-											map.addSource('Source_Control_Parcels_prj',{
-												'type':'geoJson',
-												'data':{
-													"type": "FeatureCollection",
-	  "features": [
-	    {
-	      "type": "Feature",
-	      "id": 1,
-	      "geometry": {
-	        "type": "Polygon",
-
-												}
-
-												}
-											})
-											}
-										</script>  -->
-
-								<!-- <div class="image main"><img src="images/pic01.jpg" alt="" /></div> -->
+								
 								<h3>There are many different best management practices (BMPs) that can be used to control pollution sources. Some of these include: <br></h3>
 
 								<p>1. Reducing the use of toxic chemicals and materials in industrial processes and substituting them with safer alternatives.<br>

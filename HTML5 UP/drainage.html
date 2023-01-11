@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Reference</title>
+		<title>Drainage Basins</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -36,8 +36,8 @@
 					<nav id="nav">
 						<ul class="links">
 							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Pollution sources map</a></li>
-							<!-- <li class="active"><a href="elements.html">Reference</a></li> -->
+							<li><a href="Pollution.html">Pollution sources map</a></li>
+							<li class="active"><a href="Drainage.html">Drainage Basins</a></li>
 						</ul>
 						<!-- <ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -53,8 +53,7 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<h1>Elements<br />
-									Reference</h1>
+									<h1>Drainage Basins</h1>
 								</header>
 
 								<!-- Text stuff -->
@@ -64,11 +63,12 @@
 									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>.
 									Finally, this is a <a href="#">link</a>.</p>
 									<hr />
-									<div id="mymap" style="height: 75vh"></div>
-		<script type="text/javascript" src="KentStormPipes.js"></script>
+									
+
+		<script type="text/javascript" src="DrainageBasins.js"></script>
 
 		
-<div id='map'></div>
+		<div id="mymap" style="height: 75vh"></div>
 	<!-- code where we build the map and its functionality -->
 	<script>
 		var map = L.map('mymap').setView([47.395375, -122.223393 ], 12);
@@ -87,8 +87,8 @@
 	
 	var vtLayer = L.geoJson.vt(data3, options).addTo(map);
 
-		var KentStormPipes = L.geoJson(data3, {
-		 polylineToLayer: function(feature, latlng){
+		var Drainage = L.geoJson(data3, {
+		 polygonToLayer: function(feature, latlng){
  		 var marker = L.marker(latlng);
            marker.bindPopup("SiteName: "+ feature.properties.SiteName + "<br>Address: " + feature.properties.Address );
              return marker;
