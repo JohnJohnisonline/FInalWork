@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Drainage Basins</title>
+		<title>Drainage</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -68,7 +68,7 @@
 		<script type="text/javascript" src="DrainageBasins.js"></script>
 
 		
-		<div id="mymap" style="height: 75vh"></div>
+		<div id="mymap" style="height: 85vh"></div>
 	<!-- code where we build the map and its functionality -->
 	<script>
 		var map = L.map('mymap').setView([47.395375, -122.223393 ], 12);
@@ -80,17 +80,22 @@
 				tolerance: 1,
 				debug: 0,
 				style: {
-					fillColor: "d1e5f0",
+					fillColor: "rgba(209, 229, 240, 0.01)",
 					color: "#17f4e0",
 				},
 			};
+			var Drainage = L.geoJson(data3, {
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup("BASIN: "+ feature.properties.BASIN + "<br>SUBBASIN : " + feature.properties.SUBBASIN + "<br>Water Quality: " + feature.properties.WaterQuality);
+    }
+}).addTo(map);
 	
 	var vtLayer = L.geoJson.vt(data3, options).addTo(map);
 
 		var Drainage = L.geoJson(data3, {
 		 polygonToLayer: function(feature, latlng){
  		 var marker = L.marker(latlng);
-           marker.bindPopup("SiteName: "+ feature.properties.SiteName + "<br>Address: " + feature.properties.Address );
+          marker.bindPopup("BASIN: "+ feature.properties.BASIN + "<br>Water Qaulity: " + feature.properties.WaterQaulity);
              return marker;
 					}
 	 });

@@ -32,7 +32,16 @@
 
 		<!--CSS styles-->
 	<style>
-#map{ height: 60% }
+#map{ height: 80% }
+
+#legend {
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px;
+    font: 12px Arial, sans-serif;
+    text-align: left;
+}
+
 	</style>
 
 	</head>
@@ -69,6 +78,10 @@
 		<script type="text/javascript" src="KentMajorWaterBodies.js"></script>
 
 <div id='map'></div>
+
+<div id="legend"></div>
+
+
 	<!-- code where we build the map and its functionality -->
 	<script>
 		var map = L.map('mymap').setView([47.395375, -122.223393 ], 12);
@@ -87,13 +100,17 @@
 			};
 
 		var vtLayer = L.geoJson.vt(data, options).addTo(map);
-		var vtLayer = L.geoJson.vt(data1, options).addTo(map);
-		var vtLayer = L.geoJson.vt(data2, options).addTo(map);
+		var vtLayer1 = L.geoJson.vt(data1, options).addTo(map);
+		var vtLayer2 = L.geoJson.vt(data2, options).addTo(map);
 
 	
-		L.control.layers(null, {
-					"Data Sources": vtLayer
-		}).addTo(map);
+		var layers = {
+			"Source Pollution Parcels": vtLayer,
+			"Kent Minor Water Bodies": vtLayer1,
+			"Kent Major Water Bodies": vtLayer2
+		}
+		L.control.layers(null, layers).addTo(map);
+
 
 
 		// Create layer and add it to the map
@@ -189,16 +206,8 @@
 			onEachFeature: onEachFeature
 		}).addTo(map);
 
-
-
-		var MajorWB = L.geoJson(data2, {
-					interactive: true,
-				 }).bindPopup(function (layer) {
-				     return layer.feature.properties.Name;
-				 }).addTo(map);
-
-
-
+		var legend = L.control.legend({ position: "bottomright" }).addTo(map);
+			legend.addLegend("<b>Legend:</b><br>Commercial: #d73027<br>Commercial Subunit: #fc8d59<br>Residential Multi-Family: #fee08b<br>Public Agency: #ffffbf<br>City of Kent: #d9ef8b<br>Others: #f7f7f7");
 
 	 </script>
 	 <p>
