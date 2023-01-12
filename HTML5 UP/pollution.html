@@ -79,7 +79,7 @@
 		<script type="text/javascript" src="KentMinorWaterBodies.js"></script>
 		<script type="text/javascript" src="KentMajorWaterBodies.js"></script>
 
-<div id="map" style="height: 75vh"></div>
+<div id="map" style="height: 100vh"></div>
 
 <div id="legend"></div>
 
@@ -151,14 +151,15 @@
 		layer.on({
 			click: whenClicked
 		});
-		popupOptions = {maxWidth: 200};
+		popupOptions = {maxWidth: 300, maxHeight: 200};
+		
 		console.log(layer)
 		layer.bindPopup(`"Address:</br>"${feature.properties.Address} "</br>Zoning:</br>"${feature.properties.Classifica} "</br>Metal Manufacturer:</br>"${feature.properties.MetalManuf} "</br>Municipal storm sewer system:</br>"${feature.properties.MS4_Presen} "</br> Has Fat, Oil and Grease Trap:</br>"${feature.properties.FOG_HasTra} "</br> No Fats, Oil and Grease Trap:</br>"${feature.properties.FOG_HasNon} "</br> Food Processing Permit:</br>"${feature.properties.FoodProces} "</br> Industrial:</br>"${feature.properties.Indus2} "</br> Emmits Petroleum:</br>"${feature.properties.Petro2}`)
 		layer.bindPopup(
 			`<table>
 				<tr>
-					<th>Key</th>
-					<th>Value</th>
+					<th>Source Parcel</th>
+					<th>Parcel Stats</th>
 				</tr>
 				<tr>
 					<td>Address:</td>
@@ -196,7 +197,7 @@
 					<td>Emits Petroleum:</td>
 					<td>${feature.properties.Petro2}</td>
 				</tr>
-			</table>`)
+			</table>`,popupOptions)
 		.openPopup();
 
             
